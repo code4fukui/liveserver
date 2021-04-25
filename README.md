@@ -20,7 +20,7 @@ you can use in any directory （どんなディレクトリでも簡単に実行
 $ liveserver
 ```
 
-## how to check （ネットアクセスやファイルアクセスをチェックする）
+## how to check （ネットやファイルアクセスをチェックする）
 ```
 $ deno run --prompt --unstable https://js.sabae.cc/liveserver.js
 ```
