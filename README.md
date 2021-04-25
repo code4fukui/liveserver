@@ -22,7 +22,7 @@ $ liveserver
 
 ## how to check （ネットやファイルアクセスをチェック）
 ```
-$ deno run --prompt --unstable https://js.sabae.cc/liveserver.js
+$ deno run --prompt https://js.sabae.cc/liveserver.js
 ```
 
 ## original （出展）
