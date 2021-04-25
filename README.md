@@ -2,7 +2,7 @@
 live update local web server "live-server" in Deno  
 ファイル更新で自動的にブラウザを更新するローカル用ウェブサーバー「live-server」のDeno版  
 
-## how to run
+## how to run （使い方）
 ```
 $ deno run --allow-net --allow-read https://js.sabae.cc/liveserver.js
 ```
@@ -11,20 +11,20 @@ or
 $ deno run -A https://js.sabae.cc/liveserver.js
 ```
 
-## how to install
+## how to install （インストールの仕方）
 ```
 $ deno install --allow-net --allow-read https://js.sabae.cc/liveserver.js
 ```
-you can use
+you can use in any directory （どんなディレクトリでも簡単に実行できるようになる）
 ```
 $ liveserver
 ```
 
-## how to check
+## how to check （ネットアクセスやファイルアクセスをチェックする）
 ```
 $ deno run --prompt --unstable https://js.sabae.cc/liveserver.js
 ```
 
-## original
+## original （出展）
 live-server  
 https://github.com/tapio/live-server  
