@@ -9,6 +9,7 @@ const serveInjectedWeb = (injecthtml, req, basedir) => {
   if (nq >= 0) {
     url = url.substring(0, nq);
   }
+  url = decodeURI(url);
   if (url === "/favicon.ico") {
     req.respond({ body: "" });
     return;
