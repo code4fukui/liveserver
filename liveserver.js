@@ -54,19 +54,23 @@ class LiveServer {
 
   async serve () {
     const handler = async req => {
-      if (req.method === "GET" && req.url === "/ws") {
-        if (acceptable(req)) {
-          const wsreq = {
-            conn: req.conn,
-            bufReader: req.r,
-            bufWriter: req.w,
-            headers: req.headers
+      try {
+        if (req.method === "GET" && req.url === "/ws") {
+          if (acceptable(req)) {
+            const wsreq = {
+              conn: req.conn,
+              bufReader: req.r,
+              bufWriter: req.w,
+              headers: req.headers
+            }
+            const wsock = await acceptWebSocket(wsreq)
+            await this.accept(wsock)
           }
-          const wsock = await acceptWebSocket(wsreq)
-          await this.accept(wsock)
+        } else {
+          serveInjectedWeb(injecthtml, req, "./");
         }
-      } else {
-        serveInjectedWeb(injecthtml, req, "./");
+      } catch (e) {
+        console.log("in handler", e);
       }
     };
     const hostname = "::";
@@ -87,13 +91,16 @@ class LiveServer {
   }
 
   async send(s) {
-    for (const ws of this.cons) {
-      try {
-        console.log("send " + s);
-        await ws.send(s);
-      } catch (e) {
-        //this.cons.remove(ws);
+    try {
+      for (const ws of this.cons) {
+        try {
+          console.log("send " + s);
+          await ws.send(s);
+        } catch (e) {
+          //this.cons.remove(ws);
+        }
       }
+    } catch (e) {
     }
   }
 }
