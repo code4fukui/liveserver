@@ -23,6 +23,8 @@ const serveInjectedWeb = (injecthtml, req, basedir) => {
   const headers = new Headers();
   headers.set("Access-Control-Allow-Origin", "*");
   headers.set("Access-Control-Allow-Headers", "Content-Type, Accept"); // must
+  headers.set("Cross-Origin-Embedder-Policy", "require-corp"); // for SharedArrayBuffer
+  headers.set("Cross-Origin-Opener-Policy", "same-origin"); // for SharedArrayBuffer
   const n = url.lastIndexOf(".");
   console.log(url);
   if (url.indexOf("..") === -1 && n >= 0) {
