@@ -8,7 +8,7 @@ $ deno run --allow-net --allow-read https://taisukef.github.io/liveserver/livese
 ```
 or
 ```
-$ deno run -A https://js.sabae.cc/liveserver.js
+$ deno run -A deno run --allow-net --allow-read https://taisukef.github.io/liveserver/liveserver.js
 ```
 
 ## how to install （インストールの仕方）
