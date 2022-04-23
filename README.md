@@ -25,6 +25,6 @@ $ liveserver
 $ deno run --prompt https://js.sabae.cc/liveserver.js
 ```
 
-## original （出展）
+## original （出典）
 live-server  
 https://github.com/tapio/live-server  
