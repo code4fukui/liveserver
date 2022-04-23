@@ -1,8 +1,9 @@
-import { listenAndServe } from "https://deno.land/std/http/server.ts";
-import { acceptWebSocket, acceptable, isWebSocketCloseEvent } from "https://deno.land/std/ws/mod.ts";
+import { serve } from "https://deno.land/std@0.118.0/http/server.ts";
+//import { acceptWebSocket, acceptable, isWebSocketCloseEvent } from "https://deno.land/std/ws/mod.ts";
 import { serveInjectedWeb } from "./injectwebserver.js";
 
-const defaultport = 8080;
+const defaultport = parseInt(Deno.args[0] || "8080");
+console.log(defaultport)
 
 const injecthtml = `<!-- Code injected by liveserver -->
 <script type="module">
@@ -51,11 +52,16 @@ class LiveServer {
     }
     return true;
   }
-
   async serve () {
-    const handler = async req => {
+    const handler = async (req, conn) => {
       try {
-        if (req.method === "GET" && req.url === "/ws") {
+        if (req.method === "GET" && req.url.endsWith("/ws")) {
+          const { socket, response } = Deno.upgradeWebSocket(req);
+          await this.accept(socket)
+          return response;
+
+        /*
+          //Deno.upgradeWebSocket()
           if (acceptable(req)) {
             const wsreq = {
               conn: req.conn,
@@ -66,19 +72,22 @@ class LiveServer {
             const wsock = await acceptWebSocket(wsreq)
             await this.accept(wsock)
           }
+          */
         } else {
-          serveInjectedWeb(injecthtml, req, "./");
+          return serveInjectedWeb(injecthtml, req, "./");
         }
       } catch (e) {
+        console.log(e);
         console.log("in handler", e);
       }
     };
-    const hostname = "::";
     let port = defaultport;
     for (;;) {
       if (await this.checkFreePort(port)) {
-        listenAndServe({ port, hostname }, handler);
-        console.log(`http://localhost:${port}/`);
+        const hostname = "[::]"; // for IPv6
+        const addr = hostname + ":" + port;
+        console.log(`http://${addr}/`);
+        serve(handler, { hostname, port });
         break;
       }
       //port = 3000 + Math.floor(Math.random() * (10000 - 3000));
@@ -117,8 +126,10 @@ for await (const e of watcher) {
     }
   }
   if (allcss) {
+    console.log("refreshcss");
     lives.send("refreshcss");
   } else {
+    console.log("reload");
     lives.send("reload");
   }
 }
