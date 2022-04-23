@@ -1,9 +1,8 @@
-import { serve } from "https://deno.land/std@0.118.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.136.0/http/server.ts";
 //import { acceptWebSocket, acceptable, isWebSocketCloseEvent } from "https://deno.land/std/ws/mod.ts";
 import { serveInjectedWeb } from "./injectwebserver.js";
 
-const defaultport = parseInt(Deno.args[0] || "8080");
-console.log(defaultport)
+const defaultport = parseInt(Deno.args[0] || "7001");
 
 const injecthtml = `<!-- Code injected by liveserver -->
 <script type="module">
