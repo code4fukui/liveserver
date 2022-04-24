@@ -6,7 +6,7 @@ const defaultport = parseInt(Deno.args[0] || "7001");
 const injecthtml = `<!-- Code injected by liveserver -->
 <script type="module">
 (() => {
-	const refreshCSS = () => {
+  const refreshCSS = () => {
     const sheets = [].slice.call(document.getElementsByTagName("link"));
     const head = document.getElementsByTagName("head")[0];
     for (let i = 0; i < sheets.length; i++) {
@@ -19,18 +19,18 @@ const injecthtml = `<!-- Code injected by liveserver -->
       }
       head.appendChild(elem);
     }
-	};
-	const protocol = window.location.protocol === "http:" ? "ws://" : "wss://";
-	const address = protocol + window.location.host + "/ws";
-	const socket = new WebSocket(address);
-	socket.onmessage = (msg) => {
+  };
+  const protocol = window.location.protocol === "http:" ? "ws://" : "wss://";
+  const address = protocol + window.location.host + "/ws";
+  const socket = new WebSocket(address);
+  socket.onmessage = (msg) => {
     if (msg.data == 'reload') {
       window.location.reload();
     } else if (msg.data == 'refreshcss') {
       refreshCSS();
     }
-	};
-	console.log('Live reload enabled.');
+  };
+  console.log('Live reload enabled.');
 })();
 </script>
 `;
