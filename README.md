@@ -1,6 +1,6 @@
 # liveserver
 live update local web server "live-server" in Deno  
-ファイル更新で自動的にブラウザを更新するローカル用ウェブサーバー「live-server」の[Deno](https://deno.land/)版  
+ファイル更新で自動的にブラウザを更新するローカル用ウェブサーバー「[live-server](https://github.com/tapio/live-server)」の[Deno](https://deno.land/)版  
 
 ## how to run （使い方）
 ```
