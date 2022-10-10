@@ -1,4 +1,3 @@
-import { serve } from "https://deno.land/std@0.136.0/http/server.ts";
 import { serveInjectedWeb } from "./injectwebserver.js";
 
 const defaultport = parseInt(Deno.args[0] || "8080");
@@ -85,7 +84,7 @@ class LiveServer {
         const hostname = "[::]"; // for IPv6
         const addr = hostname + ":" + port;
         console.log(`http://${addr}/`);
-        serve(handler, { hostname, port });
+        Deno.serve(handler, { hostname, port });
         break;
       }
       //port = 3000 + Math.floor(Math.random() * (10000 - 3000));
