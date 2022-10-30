@@ -50,18 +50,18 @@ const serveInjectedWeb = async (injecthtml, req, basedir) => {
           });
         }
       } else {
-        const body = await Deno.readFile(fpath);
-        if (body) {
-          return new Response(new Uint8Array(body), {
-            status: 200,
-            headers,
-          });
-        }
+        const bin = new Uint8Array(await Deno.readFile(fpath));
+        headers.set("Content-Length", bin.length);
+        console.log(headers)
+        return new Response(bin, {
+          status: 200,
+          headers,
+        });
       }
     } catch (e) {
-      //console.log(e);
+      console.log(e);
       headers.set("Content-Type", "text/html");
-//      req.respond({ body: 'error', headers });
+      //req.respond({ body: 'error', headers });
       return new Response("error", {
         status: 404,
         headers,

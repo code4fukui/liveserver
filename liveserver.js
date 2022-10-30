@@ -41,7 +41,7 @@ class LiveServer {
 
   async checkFreePort(port) {
     try {
-      const res = await (await fetch("http://localhost:" + port + "/")).text();
+      const res = await (await fetch("http://[::]:" + port + "/")).text();
       //console.log(res);
       return false;
     } catch (e) {
