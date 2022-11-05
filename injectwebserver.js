@@ -57,7 +57,7 @@ const serveInjectedWeb = async (injecthtml, req, basedir) => {
         });
       }
     } catch (e) {
-      console.log(e);
+      //console.log(e);
       headers.set("Content-Type", "text/html");
       //req.respond({ body: 'error', headers });
       return new Response("error", {
