@@ -30,7 +30,6 @@ const serveInjectedWeb = async (injecthtml, req, basedir) => {
   //headers.set("Cross-Origin-Embedder-Policy", "require-corp"); // for SharedArrayBuffer
   //headers.set("Cross-Origin-Opener-Policy", "same-origin"); // for SharedArrayBuffer
   const n = path.lastIndexOf(".");
-  console.log(path);
   if (path.indexOf("..") === -1 && n >= 0) {
     const ext = path.substring(n + 1);
     const fpath = basedir + path;
@@ -52,7 +51,6 @@ const serveInjectedWeb = async (injecthtml, req, basedir) => {
       } else {
         const bin = new Uint8Array(await Deno.readFile(fpath));
         headers.set("Content-Length", bin.length);
-        console.log(headers)
         return new Response(bin, {
           status: 200,
           headers,
