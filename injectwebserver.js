@@ -1,5 +1,5 @@
-import { CONTENT_TYPE } from "https://js.sabae.cc/CONTENT_TYPE.js";
 import { parseURL } from "https://js.sabae.cc/parseURL.js";
+import { handleWeb } from "https://js.sabae.cc/wsutil.js";
 
 const serveInjectedWeb = async (injecthtml, req, basedir) => {
   if (basedir == null) {
@@ -34,8 +34,8 @@ const serveInjectedWeb = async (injecthtml, req, basedir) => {
     const ext = path.substring(n + 1);
     const fpath = basedir + path;
     try {
-      headers.set("Content-Type", CONTENT_TYPE[ext] || "text/plain");
       if (fpath.endsWith(".html")) {
+        headers.set("Content-Type", "text/html");
         const body = await Deno.readTextFile(fpath) + injecthtml;
         //console.log(body)
         if (body) {
@@ -49,16 +49,11 @@ const serveInjectedWeb = async (injecthtml, req, basedir) => {
           });
         }
       } else {
-        const bin = new Uint8Array(await Deno.readFile(fpath));
-        headers.set("Content-Length", bin.length);
-        return new Response(bin, {
-          status: 200,
-          headers,
-        });
+        return await handleWeb("./", req, path);
       }
     } catch (e) {
       //console.log(e);
-      headers.set("Content-Type", "text/html");
+      headers.set("Content-Type", "text/plain");
       //req.respond({ body: 'error', headers });
       return new Response("error", {
         status: 404,
