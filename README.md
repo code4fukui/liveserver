@@ -4,7 +4,7 @@ live update local web server "live-server" in Deno
 
 ## how to run （使い方）
 ```
-$ deno run --allow-net --allow-read https://taisukef.github.io/liveserver/liveserver.js
+$ deno run --allow-net --allow-read --allow-env https://taisukef.github.io/liveserver/liveserver.js
 ```
 or
 ```
@@ -13,7 +13,7 @@ $ deno run -A https://taisukef.github.io/liveserver/liveserver.js
 
 ## how to install （インストールの仕方）
 ```
-$ deno install --allow-net --allow-read https://taisukef.github.io/liveserver/liveserver.js
+$ deno install --allow-net --allow-read --allow-env https://taisukef.github.io/liveserver/liveserver.js
 ```
 you can use in any directory （どんなディレクトリでも簡単に実行できるようになる）
 ```
