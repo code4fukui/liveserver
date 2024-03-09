@@ -84,7 +84,7 @@ class LiveServer {
         const hostname = "[::]"; // for IPv6
         const addr = hostname + ":" + port;
         console.log(`http://${addr}/`);
-        Deno.serve(handler, { hostname, port });
+        Deno.serve({ hostname, port }, handler);
         break;
       }
       //port = 3000 + Math.floor(Math.random() * (10000 - 3000));
