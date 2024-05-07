@@ -92,7 +92,7 @@ class LiveServer {
       if (await this.checkFreePort(port)) {
         const hostname = "[::]"; // for IPv6
         const addr = hostname + ":" + port;
-        console.log(`http://${addr}/`);
+        //console.log(`http://${addr}/`);
         Deno.serve({ hostname, port }, handler);
         break;
       }
