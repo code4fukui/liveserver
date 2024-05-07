@@ -6,17 +6,19 @@
 ## how to run （使い方）
 
 ```sh
-$ deno run -A https://js.sabae.cc/liveserver.js
+$ deno run --allow-net --allow-read=./ https://js.sabae.cc/liveserver.js
 ```
-with port
+→ open http://localhost/
+
+or exec with port number
 ```sh
-$ deno run -A https://js.sabae.cc/liveserver.js 8888
+$ deno run --allow-net --allow-read=./ https://js.sabae.cc/liveserver.js 8888
 ```
 
 ## how to install （インストールの仕方）
 
 ```sh
-$ deno install -g --allow-net --allow-read https://js.sabae.cc/liveserver.js
+$ deno install -g --allow-net --allow-read=./ https://js.sabae.cc/liveserver.js
 ```
 you can use in any directory （どんなディレクトリでも簡単に実行できるようになる）
 ```sh
@@ -26,7 +28,7 @@ $ liveserver
 ## how to use （使い方）
 
 - exec liveserver （liveserverを起動）
-- open index.html on your browser （index.htmlをブラウザで開く）
+- open index.html on your browser （[http://localhost/](http://localhost/)をブラウザで開く）
 - edit index.html → refresh the page! （index.htmlを編集すると自動的に再読み込みされる!）
 - edit style.css → refresh the style on the page! （style.cssを編集するスタイルだけ自動的に再設定される!）
 
