@@ -1,7 +1,7 @@
 import { serveInjectedWeb } from "./injectwebserver.js";
 import { serveFile } from "https://deno.land/std@0.224.0/http/file_server.ts";
 
-const defaultport = parseInt(Deno.args[0] || "8080");
+const defaultport = parseInt(Deno.args[0] || "80");
 
 const injecthtml = `<!-- Code injected by liveserver -->
 <script type="module">
