@@ -1,4 +1,5 @@
 import { serveInjectedWeb } from "./injectwebserver.js";
+import { serveFile } from "https://deno.land/std@0.224.0/http/file_server.ts";
 
 const defaultport = parseInt(Deno.args[0] || "8080");
 
@@ -71,7 +72,15 @@ class LiveServer {
           }
           */
         } else {
-          return serveInjectedWeb(injecthtml, req, "./");
+          const url = new URL(req.url);
+          const path0 = url.pathname;
+          const path = path0.endsWith("/") ? path0 + "index.html" : path0;
+          if (path.indexOf("..") >= 0 || path[1] == "/") return null;
+          const fn = path.substring(1);
+          if (fn.endsWith(".html")) {
+            return serveInjectedWeb(injecthtml, req, "./");
+          }
+          return serveFile(req, fn);
         }
       } catch (e) {
         console.log(e);
