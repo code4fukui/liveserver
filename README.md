@@ -6,19 +6,19 @@
 ## how to run （使い方）
 
 ```sh
-$ deno run --allow-net --allow-read=./ https://js.sabae.cc/liveserver.js
+$ deno run --allow-env --allow-read=./ --allow-net https://js.sabae.cc/liveserver.js
 ```
 → open http://localhost/
 
 or exec with port number
 ```sh
-$ deno run --allow-net --allow-read=./ https://js.sabae.cc/liveserver.js 8888
+$ deno run --allow-env --allow-read=./ --allow-net https://js.sabae.cc/liveserver.js 8888
 ```
 
 ## how to install （インストールの仕方）
 
 ```sh
-$ deno install -g --allow-net --allow-read=./ https://js.sabae.cc/liveserver.js
+$ deno install -g --allow-env --allow-read=./ --allow-net https://js.sabae.cc/liveserver.js
 ```
 you can use in any directory （どんなディレクトリでも簡単に実行できるようになる）
 ```sh
