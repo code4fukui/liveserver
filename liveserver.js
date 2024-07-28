@@ -97,7 +97,7 @@ class LiveServer {
         break;
       }
       //port = 3000 + Math.floor(Math.random() * (10000 - 3000));
-      port++;
+      port = port == 80 ? 8000 : port + 1;
     }
   }
 
