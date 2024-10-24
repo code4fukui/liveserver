@@ -1,1 +1,1 @@
-deno install --allow-read --allow-run --allow-net --allow-env -f liveserver.js
+deno install --global --allow-read --allow-run --allow-net --allow-env --allow-import -f liveserver.js
