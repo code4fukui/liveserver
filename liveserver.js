@@ -73,7 +73,7 @@ class LiveServer {
           */
         } else {
           const url = new URL(req.url);
-          const path0 = url.pathname;
+          const path0 = decodeURIComponent(url.pathname);
           const path = path0.endsWith("/") ? path0 + "index.html" : path0;
           if (path.indexOf("..") >= 0 || path[1] == "/") return null;
           const fn = path.substring(1);
