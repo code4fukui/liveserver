@@ -1,43 +1,37 @@
 # liveserver
 
-- live update local web server "live-server" in Deno
-- ファイル更新で自動的にブラウザを更新するローカル用ウェブサーバー「[live-server](https://github.com/tapio/live-server)」の[Deno](https://deno.land/)版
+A live-update local web server "live-server" in Deno.
 
-## how to run （使い方）
+## Features
+- Automatically refreshes the browser when files are updated
+- Works with Deno
 
+## Requirements
+- [Deno](https://deno.land/) runtime
+
+## Usage
+
+### Run
 ```sh
 $ deno run --allow-env --allow-read --allow-net https://js.sabae.cc/liveserver.js
 ```
-→ open http://localhost/
+Then open `http://localhost/`
 
-or exec with port number
+You can also specify a port number:
 ```sh
 $ deno run --allow-env --allow-read --allow-net https://js.sabae.cc/liveserver.js 8888
 ```
 
-## how to install （インストールの仕方）
-
+### Install
 ```sh
 $ deno install -g --allow-env --allow-read --allow-net https://js.sabae.cc/liveserver.js
 ```
-you can use in any directory （どんなディレクトリでも簡単に実行できるようになる）
-```sh
-$ liveserver
-```
+This will allow you to run `liveserver` from any directory.
 
-## how to use （使い方）
-
-- exec liveserver （liveserverを起動）
-- open index.html on your browser （[http://localhost/](http://localhost/)をブラウザで開く）
-- edit index.html → refresh the page! （index.htmlを編集すると自動的に再読み込みされる!）
-- edit style.css → refresh the style on the page! （style.cssを編集するスタイルだけ自動的に再設定される!）
-
-## how to uninstall （アンインストールの仕方）
-
+### Uninstall
 ```sh
 $ deno uninstall -g liveserver
 ```
 
-## original （出典）
-
-- [live-server](https://github.com/tapio/live-server)
+## License
+MIT
