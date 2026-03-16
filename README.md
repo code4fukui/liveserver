@@ -36,4 +36,4 @@ $ deno uninstall -g liveserver
 ```
 
 ## License
-MIT
+MIT License — see [LICENSE](LICENSE).
