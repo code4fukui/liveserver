@@ -1,43 +1,73 @@
 # liveserver
 
-- live update local web server "live-server" in Deno
-- ファイル更新で自動的にブラウザを更新するローカル用ウェブサーバー「[live-server](https://github.com/tapio/live-server)」の[Deno](https://deno.land/)版
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
 
-## how to run （使い方）
+A simple, Deno-based live-reloading web server for local development.
 
-```sh
-$ deno run --allow-env --allow-read --allow-net https://js.sabae.cc/liveserver.js
-```
-→ open http://localhost/
+## Features
 
-or exec with port number
-```sh
-$ deno run --allow-env --allow-read --allow-net https://js.sabae.cc/liveserver.js 8888
-```
+-   **Live Reload:** Automatically reloads the browser when any file in the current directory is changed.
+-   **CSS Hot-Reload:** Injects CSS changes without a full page refresh for a smoother development experience.
+-   **Automatic Port Finding:** If the default port (80) or a specified port is in use, it automatically finds the next available port.
+-   **Zero-Configuration:** Serves the current directory out of the box.
+-   **Deno-Powered:** Runs on the [Deno](https://deno.land/) runtime.
 
-## how to install （インストールの仕方）
+## Requirements
 
-```sh
-$ deno install -g --allow-env --allow-read --allow-net https://js.sabae.cc/liveserver.js
-```
-you can use in any directory （どんなディレクトリでも簡単に実行できるようになる）
-```sh
-$ liveserver
-```
+-   [Deno](https://deno.land/) runtime
 
-## how to use （使い方）
+## Usage
 
-- exec liveserver （liveserverを起動）
-- open index.html on your browser （[http://localhost/](http://localhost/)をブラウザで開く）
-- edit index.html → refresh the page! （index.htmlを編集すると自動的に再読み込みされる!）
-- edit style.css → refresh the style on the page! （style.cssを編集するスタイルだけ自動的に再設定される!）
+`liveserver` serves files from the directory it's run in.
 
-## how to uninstall （アンインストールの仕方）
+### Option 1: Run Directly from URL
+
+This is the quickest way to use `liveserver` without installing it.
 
 ```sh
-$ deno uninstall -g liveserver
+deno run --allow-env --allow-read --allow-net https://js.sabae.cc/liveserver.js
 ```
 
-## original （出典）
+Then open `http://localhost/` in your browser. By default, it uses port 80. If port 80 is unavailable, it will try port 8000, then 8001, and so on.
 
-- [live-server](https://github.com/tapio/live-server)
+To specify a starting port:
+
+```sh
+deno run --allow-env --allow-read --allow-net https://js.sabae.cc/liveserver.js 8888
+```
+
+### Option 2: Install as a Command
+
+Install the script as an executable to run `liveserver` from any directory.
+
+**1. Install the command:**
+
+```sh
+deno install -g --allow-env --allow-read --allow-net https://js.sabae.cc/liveserver.js
+```
+
+*Tip: To update to the latest version, run the same command with the `-f` (force) flag.*
+
+**2. Run the server:**
+
+```sh
+liveserver
+```
+
+Or with a specific port:
+
+```sh
+liveserver 8888
+```
+
+## Uninstall
+
+To remove the installed `liveserver` command:
+
+```sh
+deno uninstall -g liveserver
+```
+
+## License
+
+MIT License — see [LICENSE](LICENSE).
